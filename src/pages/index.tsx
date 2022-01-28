@@ -22,7 +22,7 @@ export default function Home() {
     >
       <Flex
         w='100%'
-        h='55vh'
+        h='58vh'
         margin='0 auto'
         maxW={1280}
         flexDirection='column'
