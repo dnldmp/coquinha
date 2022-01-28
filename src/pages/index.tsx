@@ -4,10 +4,13 @@ import { useState } from "react";
 
 export default function Home() {
   const [sortudo, setSortudo] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   function handleSearchName() {
+    setIsLoading(true)
     axios.get('/api/coquinha').then(response => {
       setSortudo(response.data.sortudo)
+      setIsLoading(false)
     })
   }
 
@@ -19,7 +22,7 @@ export default function Home() {
     >
       <Flex
         w='100%'
-        h='60vh'
+        h='55vh'
         margin='0 auto'
         maxW={1280}
         flexDirection='column'
@@ -35,6 +38,7 @@ export default function Home() {
           fontSize={['3xl', '5xl']}
           mt='10'
           textAlign='center'
+          p='0 0.5rem'
         >
           Qual a coquinha da vez?
         </Text>
@@ -58,6 +62,7 @@ export default function Home() {
         fontSize={['2xl', '3xl']}
         alignContent='center'
         colorScheme='red'
+        isLoading={isLoading}
       >
         Gerar sortudo!
       </Button> 
