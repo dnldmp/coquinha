@@ -1,6 +1,6 @@
 import { Flex, Image, Text, Button } from "@chakra-ui/react";
-import axios from 'axios'
 import { useState } from "react";
+import { api } from "../service/api";
 
 export default function Home() {
   const [sortudo, setSortudo] = useState('')
@@ -8,7 +8,7 @@ export default function Home() {
 
   function handleSearchName() {
     setIsLoading(true)
-    axios.get('/api/coquinha').then(response => {
+    api.get('sortudo').then(response => {
       setSortudo(response.data.sortudo)
       setIsLoading(false)
     })
